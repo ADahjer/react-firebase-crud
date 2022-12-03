@@ -1,0 +1,20 @@
+.contacts {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+}
+
+.contact__card {
+    max-width: 18.75rem;
+    text-align: center;
+}
+
+.contact__img {
+    width: 100%;
+}
+
+.contact__buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
