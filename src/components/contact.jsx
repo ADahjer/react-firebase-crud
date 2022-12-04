@@ -5,10 +5,16 @@ import Button from 'react-bootstrap/Button';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase/firestore';
 import DeleteModal from './deleteModal';
+import UpdateModal from './updateModal';
 
 const Contact = ({contactData}) => {
 
     const [del, setDel] = useState(false);
+    const [update, setUpdate] = useState(false);
+
+    const handleEdit = () => {
+        setUpdate(true);
+    }
 
     const ConfirmDelete = () => {
         setDel(true);
@@ -37,10 +43,10 @@ const Contact = ({contactData}) => {
                 <ListGroup.Item>Barrio: {contactData.barrio}</ListGroup.Item>
             </ListGroup>
             <Card.Body className='contact__buttons'>
-                <Button variant='warning'>Editar</Button>
+                <Button variant='warning' onClick={handleEdit} >Editar</Button>
                 <Button variant='danger' onClick={ConfirmDelete} >Eliminar</Button>
-                {console.log(contactData)}
             </Card.Body>
+            <UpdateModal contactData={contactData} setUpdate={setUpdate} update={update} />
             <DeleteModal contactData={contactData} del={del} setDel={setDel} handleDelete={handleDelete} />
         </Card>
     )
