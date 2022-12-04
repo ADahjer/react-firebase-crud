@@ -1,8 +1,16 @@
+.contacts__container {
+    text-align: center;
+}
+
 .contacts {
     margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.2rem;
+}
+
+.addButton {
+    margin-top: 1.5rem;
 }
 
 .contact__card {
@@ -17,4 +25,17 @@
 .contact__buttons {
     display: flex;
     justify-content: space-evenly;
+}
+
+.modal__contrainer {
+    padding: 50rem;
+}
+
+.modal__buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.modal__button {
+    width: 30%;
 }

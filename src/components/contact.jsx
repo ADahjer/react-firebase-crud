@@ -1,12 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../firebase/firestore';
 
 const Contact = ({contactData}) => {
 
+    const handleDelete = async () => {
+        const docRef = doc(db, 'contacts', contactData.id);
+        try {
+            await deleteDoc(docRef);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
-        <Card className='contact__card'>
+        <Card>
             <Card.Img variant='top' src={contactData.img} className='contact__img' />
             <Card.Body>
                 <Card.Title>{`${contactData.nombre} ${contactData.apellido}`}</Card.Title>
@@ -20,7 +31,7 @@ const Contact = ({contactData}) => {
             </ListGroup>
             <Card.Body className='contact__buttons'>
                 <Button variant='warning'>Editar</Button>
-                <Button variant='danger'>Eliminar</Button>
+                <Button variant='danger' onClick={handleDelete} >Eliminar</Button>
                 {console.log(contactData)}
             </Card.Body>
         </Card>
